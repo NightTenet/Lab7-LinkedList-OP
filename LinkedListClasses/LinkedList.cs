@@ -43,9 +43,9 @@ public class LinkedList : IEnumerable<float>
         return null;
     }
 
-    public float FindSumOfLowerNumbers()
+    private float FindFirstNegative()
     {
-        float negNumber = 0f;
+        float negNumber = 0;
         Node? currentNode = _head;
 
         while (currentNode != null)
@@ -58,8 +58,15 @@ public class LinkedList : IEnumerable<float>
             currentNode = currentNode.Next;
         }
 
+        return negNumber;
+    }
+
+    public float FindSumOfLowerNumbers()
+    {
+        float negNumber = FindFirstNegative();
+        Node? currentNode = _head;
+
         float sum = 0f;
-        currentNode = _head;
         if (negNumber != 0f)
         {
             while (currentNode != null)
